@@ -24,7 +24,7 @@ html {
 }
 
 #ball {
-    background-color: red;
+    background-color: rgb(225, 82, 82);
     height: 20px;
     width: 20px;
     border-radius: 50%;
