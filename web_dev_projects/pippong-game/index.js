@@ -38,9 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (posY > table.offsetHeight - ball.offsetHeight || posY <= 0) {
             velocityY = -velocityY;
         }
-    }, 10);
+    }, 15);
 
-    // Paddle movement
+    // Paddle movement (keyboard)
     let paddlePosY = paddle.offsetTop; // start at current paddle position
     let dPy = 10;
 
@@ -55,6 +55,27 @@ document.addEventListener("DOMContentLoaded", () => {
         ) {
             // Down arrow
             paddlePosY += dPy;
+        }
+
+        paddle.style.top = `${paddlePosY}px`;
+    });
+
+    // Paddle movement (mouse)
+    document.addEventListener("mousemove", (event) => {
+        let mouseDistanceFromTop = event.clientY;
+        let tableDistanceFromTop = table.offsetTop;
+
+        // center the paddle on the mouse pointer
+        let mousePointControl =
+            mouseDistanceFromTop - tableDistanceFromTop - paddle.offsetHeight / 2;
+
+        // Clamp paddle inside table
+        if (mousePointControl < 0) {
+            paddlePosY = 0;
+        } else if (mousePointControl > table.offsetHeight - paddle.offsetHeight) {
+            paddlePosY = table.offsetHeight - paddle.offsetHeight;
+        } else {
+            paddlePosY = mousePointControl;
         }
 
         paddle.style.top = `${paddlePosY}px`;

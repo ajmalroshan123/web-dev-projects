@@ -1,7 +1,12 @@
 html {
     box-sizing: border-box;
-    background-color: rgb(0, 0, 0);
+    background: radial-gradient(circle at center, #d9a5a5, #8a95d7);
     color: white;
+    font-family: 'Arial', sans-serif;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 *, *::before, *::after {
@@ -9,24 +14,49 @@ html {
 }
 
 #ping-pong-table {
-    border: 2px solid rgb(228, 210, 210);
+    border: 3px solid #ffffffaa;
     width: 700px;
     height: 400px;
     position: relative;
+    background: linear-gradient(135deg, #1a1a1a, #262626);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+    overflow: hidden;
 }
 
+/* Glowing paddle */
 #paddle {
-    background-color: blue;
+    background: linear-gradient(to bottom, #00c6ff, #0072ff);
     height: 75px;
-    width: 10px;
+    width: 12px;
     margin-left: 2px;
     position: absolute;
+    border-radius: 6px;
+    box-shadow: 0 0 15px #0072ff, 0 0 30px #0072ff77;
 }
 
+/* Glowing neon ball */
 #ball {
-    background-color: rgb(225, 82, 82);
+    background: radial-gradient(circle, #ff4b2b, #ff416c);
     height: 20px;
     width: 20px;
     border-radius: 50%;
     position: absolute;
+    box-shadow: 0 0 15px #ff416c, 0 0 30px #ff4b2b;
+    animation: pulse 1.5s infinite alternate;
+}
+
+/* Ball glowing pulse */
+@keyframes pulse {
+    from {
+        box-shadow: 0 0 10px #ff4b2b, 0 0 20px #ff416c;
+    }
+    to {
+        box-shadow: 0 0 25px #ff416c, 0 0 50px #ff4b2b;
+    }
+}
+
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
 }
